@@ -58,10 +58,7 @@ const config: Config = {
                 height: 448 / 8,
                 href: "/",
             },
-            items: [
-                { to: "/projects", label: "Projects", position: "left" },
-                { to: "/blog", label: "Blog", position: "left" },
-            ],
+            items: [{ to: "/projects", label: "Projects", position: "left" }],
         },
         footer: {
             links: [
