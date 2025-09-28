@@ -116,10 +116,6 @@ const config: Config = {
                     title: "More",
                     items: [
                         {
-                            label: "Blog",
-                            to: "/blog",
-                        },
-                        {
                             label: "GitHub",
                             href: "https://github.com/DAQEM",
                         },
@@ -130,7 +126,7 @@ const config: Config = {
         },
         prism: {
             theme: prismThemes.github,
-            darkTheme: prismThemes.dracula,
+            darkTheme: prismThemes.oneDark,
         },
     } satisfies Preset.ThemeConfig,
     plugins: [
