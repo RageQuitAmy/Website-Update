@@ -48,26 +48,22 @@ const config: Config = {
     ],
 
     themeConfig: {
-        // Replace with your project's social card
         image: "img/docusaurus-social-card.jpg",
         navbar: {
-            title: "DAQEM Studios",
             logo: {
                 alt: "DAQEM Studios Logo",
                 src: "img/logo.svg",
+                srcDark: "img/logo-dark.svg",
+                width: 1040 / 8,
+                height: 448 / 8,
+                href: "/",
             },
             items: [
                 { to: "/projects", label: "Projects", position: "left" },
                 { to: "/blog", label: "Blog", position: "left" },
-                {
-                    href: "https://github.com/facebook/docusaurus",
-                    label: "GitHub",
-                    position: "right",
-                },
             ],
         },
         footer: {
-            style: "dark",
             links: [
                 {
                     title: "Docs",
@@ -141,6 +137,7 @@ const config: Config = {
         },
     } satisfies Preset.ThemeConfig,
     plugins: [
+        "./src/plugins/tailwind-plugin.ts",
         [
             "@docusaurus/plugin-content-docs",
             {
