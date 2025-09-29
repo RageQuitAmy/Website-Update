@@ -1,10 +1,10 @@
-/**
- * Any CSS included here will be global. The classic template
- * bundles Infima by default. Infima is a CSS framework designed to
- * work well for content-centric websites.
- */
+@font-face {
+    font-family: "Montserrat";
+    src: url("/static/fonts/Montserrat.ttf") format("truetype");
+    font-weight: 800;
+    font-stretch: 75% 125%;
+}
 
-/* You can override the default Infima variables here. */
 :root {
     --ifm-color-primary: #0073ff;
     --ifm-color-primary-dark: #005ccc;
@@ -26,10 +26,21 @@
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme="dark"] {
     --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
-    --ifm-color-content: #ffffff;
+    --ifm-color-content: #dddddd;
+    --ifm-heading-color: #ffffff;
+    --ifm-footer-color: #ffffff;
     --ifm-background-color: #050a20;
-    --ifm-navbar-background-color: #050a20;
-    --ifm-footer-background-color: #050a20;
+    --ifm-navbar-background-color: #020616;
+    --ifm-footer-background-color: #020616;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Montserrat", sans-serif;
 }
 
 .navbar__logo {
@@ -43,7 +54,25 @@
 
 .navbar__link {
     font-size: 1.125rem;
-    font-weight: 500;
+    font-family: "Montserrat", sans-serif;
+}
+
+.navbar__item {
+    padding: 0 0.5rem;
+}
+
+.navbar__items--right {
+    align-items: center;
+    gap: 2rem;
+}
+
+.footer__title {
+    font-family: "Montserrat", sans-serif;
+}
+
+.footer__copyright {
+    color: #777777;
+    margin-top: 4rem;
 }
 
 @import "tailwindcss/theme.css" layer(theme);
@@ -51,32 +80,30 @@
     #tw-scope {
         @import "tailwindcss/preflight.css" layer(base);
     }
-
-    .navbar__inner {
-        width: 100%;
-
-        @media (width >= 40rem) {
-            max-width: 40rem;
-        }
-
-        @media (width >= 48rem) {
-            max-width: 48rem;
-        }
-
-        @media (width >= 64rem) {
-            max-width: 64rem;
-        }
-
-        @media (width >= 80rem) {
-            max-width: 80rem;
-        }
-
-        @media (width >= 96rem) {
-            max-width: 96rem;
-        }
-    }
 }
 @import "tailwindcss/utilities.css" layer(utilities);
 
 /* Dark mode variant for Docusaurus theme */
 @custom-variant dark (&:is([data-theme="dark"] *));
+
+@theme {
+    --breakpoint-sm: 640px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 960px;
+    --breakpoint-xl: 1200px;
+    --breakpoint-2xl: 1400px;
+
+    --color-primary-lightest: var(--ifm-color-primary-lightest);
+    --color-primary-lighter: var(--ifm-color-primary-lighter);
+    --color-primary-light: var(--ifm-color-primary-light);
+    --color-primary: var(--ifm-color-primary);
+    --color-primary-dark: var(--ifm-color-primary-dark);
+    --color-primary-darker: var(--ifm-color-primary-darker);
+    --color-primary-darkest: var(--ifm-color-primary-darkest);
+
+    --color-background: var(--ifm-background-color);
+    --color-header-background: var(--ifm-navbar-background-color);
+    --color-footer-background: var(--ifm-footer-background-color);
+
+    --font-heading: "Montserrat", sans-serif;
+}

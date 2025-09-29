@@ -2,6 +2,7 @@ import type * as DocsPlugin from "@docusaurus/plugin-content-docs";
 import type * as Preset from "@docusaurus/preset-classic";
 import type { Config } from "@docusaurus/types";
 import { themes as prismThemes } from "prism-react-renderer";
+import { projects } from "./src/lib/projects";
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
@@ -58,36 +59,25 @@ const config: Config = {
                 height: 448 / 8,
                 href: "/",
             },
-            items: [{ to: "/projects", label: "Projects", position: "left" }],
+            items: [
+                { to: "/#projects", label: "Projects", position: "right" },
+                { to: "/blog", label: "News", position: "right" },
+            ],
         },
         footer: {
             links: [
                 {
-                    title: "Docs",
+                    title: "Projects",
                     items: [
+                        ...projects
+                            .map((project) => ({
+                                label: project.name,
+                                to: `/projects/${project.slug}`,
+                            }))
+                            .slice(0, 5),
                         {
-                            label: "Jobs+",
-                            to: "/projects/jobsplus/wiki",
-                        },
-                        {
-                            label: "YAML Config",
-                            to: "/projects/yaml-config/wiki",
-                        },
-                        {
-                            label: "UI Lib",
-                            to: "/projects/ui-lib/wiki",
-                        },
-                        {
-                            label: "Arc Lib",
-                            to: "/projects/arc/wiki",
-                        },
-                        {
-                            label: "Item Restrictions",
-                            to: "/projects/item-restrictions/wiki",
-                        },
-                        {
-                            label: "More Projects",
-                            to: "/projects",
+                            label: "All Projects",
+                            to: "/#projects",
                         },
                     ],
                 },
@@ -97,6 +87,10 @@ const config: Config = {
                         {
                             label: "Discord",
                             href: "https://daqem.com/discord",
+                        },
+                        {
+                            label: "GitHub",
+                            href: "https://github.com/DAQEM",
                         },
                         {
                             label: "CurseForge",
@@ -113,16 +107,21 @@ const config: Config = {
                     ],
                 },
                 {
-                    title: "More",
+                    title: "Legal",
                     items: [
                         {
-                            label: "GitHub",
-                            href: "https://github.com/DAQEM",
+                            label: "Privacy Policy",
+                            to: "/privacy-policy",
+                        },
+                        {
+                            label: "Terms of Service",
+                            to: "/terms-of-service",
                         },
                     ],
                 },
             ],
-            copyright: `Copyright © ${new Date().getFullYear()} DAQEM Studios. All rights reserved.`,
+            copyright:
+                "NOT AN OFFICIAL MINECRAFT SERVICE. NOT APPROVED BY OR ASSOCIATED WITH MOJANG OR MICROSOFT.",
         },
         prism: {
             theme: prismThemes.github,
@@ -131,61 +130,17 @@ const config: Config = {
     } satisfies Preset.ThemeConfig,
     plugins: [
         "./src/plugins/tailwind-plugin.ts",
-        [
+        ...projects.map((project) => [
             "@docusaurus/plugin-content-docs",
             {
-                id: "jobsplus",
-                path: "docs/jobsplus",
-                routeBasePath: "/projects/jobsplus/wiki",
+                id: project.slug,
+                path: `docs/${project.slug}`,
+                routeBasePath: `/projects/${project.slug}`,
                 sidebarPath: "./sidebars.ts",
                 sidebarCollapsed: true,
                 editUrl: "https://github.com/DAQEM/website/tree/main/",
             } satisfies Partial<DocsPlugin.PluginOptions>,
-        ],
-        [
-            "@docusaurus/plugin-content-docs",
-            {
-                id: "yaml-config",
-                path: "docs/yaml-config",
-                routeBasePath: "/projects/yaml-config/wiki",
-                sidebarPath: "./sidebars.ts",
-                sidebarCollapsed: true,
-                editUrl: "https://github.com/DAQEM/website/tree/main/",
-            } satisfies Partial<DocsPlugin.PluginOptions>,
-        ],
-        [
-            "@docusaurus/plugin-content-docs",
-            {
-                id: "ui-lib",
-                path: "docs/ui-lib",
-                routeBasePath: "/projects/ui-lib/wiki",
-                sidebarPath: "./sidebars.ts",
-                sidebarCollapsed: true,
-                editUrl: "https://github.com/DAQEM/website/tree/main/",
-            } satisfies Partial<DocsPlugin.PluginOptions>,
-        ],
-        [
-            "@docusaurus/plugin-content-docs",
-            {
-                id: "arc",
-                path: "docs/arc",
-                routeBasePath: "/projects/arc/wiki",
-                sidebarPath: "./sidebars.ts",
-                sidebarCollapsed: true,
-                editUrl: "https://github.com/DAQEM/website/tree/main/",
-            } satisfies Partial<DocsPlugin.PluginOptions>,
-        ],
-        [
-            "@docusaurus/plugin-content-docs",
-            {
-                id: "item-restrictions",
-                path: "docs/item-restrictions",
-                routeBasePath: "/projects/item-restrictions/wiki",
-                sidebarPath: "./sidebars.ts",
-                sidebarCollapsed: true,
-                editUrl: "https://github.com/DAQEM/website/tree/main/",
-            } satisfies Partial<DocsPlugin.PluginOptions>,
-        ],
+        ]),
     ],
 };
 
