@@ -76,6 +76,11 @@ h6 {
 }
 
 @import "tailwindcss/theme.css" layer(theme);
+
+@utility mc-card {
+    @apply bg-[var(--color-card-background)] [box-shadow:2px_-2px_0_2px_var(--color-card-background-light),_-2px_2px_0_2px_var(--color-card-background-dark),_0_0_0_4px_var(--color-card-background)] p-8 hover:[box-shadow:0_0_0_4px_#ffffff];
+}
+
 @layer base {
     #tw-scope {
         @import "tailwindcss/preflight.css" layer(base);
@@ -104,6 +109,11 @@ h6 {
     --color-background: var(--ifm-background-color);
     --color-header-background: var(--ifm-navbar-background-color);
     --color-footer-background: var(--ifm-footer-background-color);
+    --color-card-background: #232b46;
+    --color-card-background-light: #384367;
+    --color-card-background-dark: #0e1735;
+
+    --color-text: var(--ifm-color-content);
 
     --font-heading: "Montserrat", sans-serif;
 }

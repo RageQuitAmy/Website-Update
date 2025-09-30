@@ -1,3 +1,4 @@
+import Link from "@docusaurus/Link";
 import { ThemeClassNames } from "@docusaurus/theme-common";
 import CurseForge from "@site/src/components/icons/curseforge";
 import Discord from "@site/src/components/icons/discord";
@@ -63,27 +64,36 @@ export default function FooterLinksMultiColumn({ columns }: Props): ReactNode {
                     />
                 </div>
                 <div className="flex gap-4">
-                    <a href="https://daqem.com/discord" className="size-6">
+                    <Link
+                        href="https://daqem.com/discord"
+                        className="size-6 flex items-center"
+                    >
                         <Discord />
-                    </a>
-                    <a href="https://github.com/DAQEM" className="size-6">
+                    </Link>
+                    <Link
+                        href="https://github.com/DAQEM"
+                        className="size-6 flex items-center"
+                    >
                         <GitHub />
-                    </a>
-                    <a
+                    </Link>
+                    <Link
                         href="https://curseforge.com/members/daqem"
-                        className="size-6"
+                        className="size-6 flex items-center"
                     >
                         <CurseForge />
-                    </a>
-                    <a
+                    </Link>
+                    <Link
                         href="https://modrinth.com/organization/daqem-studios"
-                        className="size-6"
+                        className="size-6 flex items-center"
                     >
                         <Modrinth />
-                    </a>
-                    <a href="https://ko-fi.com/daqem" className="size-6">
+                    </Link>
+                    <Link
+                        href="https://ko-fi.com/daqem"
+                        className="size-6 flex items-center"
+                    >
                         <KoFi />
-                    </a>
+                    </Link>
                 </div>
                 <div>
                     <p className="m-0">

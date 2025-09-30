@@ -52,7 +52,7 @@ const config: Config = {
         image: "img/docusaurus-social-card.jpg",
         colorMode: {
             defaultMode: "dark",
-            disableSwitch: true
+            disableSwitch: true,
         },
         navbar: {
             logo: {
@@ -140,8 +140,8 @@ const config: Config = {
                 id: project.slug,
                 path: `docs/${project.slug}`,
                 routeBasePath: `/projects/${project.slug}`,
-                sidebarPath: "./sidebars.ts",
-                sidebarCollapsed: true,
+                sidebarPath: `docs/${project.slug}/sidebar.ts`,
+                sidebarCollapsed: false,
                 editUrl: "https://github.com/DAQEM/website/tree/main/",
             } satisfies Partial<DocsPlugin.PluginOptions>,
         ]),

@@ -1,3 +1,4 @@
+import Link from "@docusaurus/Link";
 import CurseForge from "../icons/curseforge";
 import GitHub from "../icons/github";
 import Modrinth from "../icons/modrinth";
@@ -35,34 +36,34 @@ const ProjectHeader = ({
                 <p className="m-0 mt-2 text-lg text-gray-200">{description}</p>
                 <div className="mt-4 flex flex-wrap gap-4">
                     {curseForgeSlug && (
-                        <a
+                        <Link
                             href={`https://www.curseforge.com/minecraft/${curseForgeSlug}`}
                             className="hover:underline"
                             target="_blank"
                             rel="noopener noreferrer"
                         >
                             <CurseForge />
-                        </a>
+                        </Link>
                     )}
                     {modrinthSlug && (
-                        <a
+                        <Link
                             href={`https://modrinth.com/${modrinthSlug}`}
                             className="hover:underline"
                             target="_blank"
                             rel="noopener noreferrer"
                         >
                             <Modrinth />
-                        </a>
+                        </Link>
                     )}
                     {githubSlug && (
-                        <a
+                        <Link
                             href={`https://github.com/${githubSlug}`}
                             className="hover:underline"
                             target="_blank"
                             rel="noopener noreferrer"
                         >
                             <GitHub />
-                        </a>
+                        </Link>
                     )}
                 </div>
             </div>
