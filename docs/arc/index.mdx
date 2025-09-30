@@ -1,7 +1,23 @@
 ---
-title: Arc Lib Wiki
-sidebar_position: 1
-sidebar_label: Introduction
+title: Arc Lib
+hide_title: true
 ---
 
-## Hello! Welcome to the Arc Lib wiki.
+import ProjectHeader from "@site/src/components/projects/project-header";
+import { projectsBySlug } from "@site/src/lib/projects";
+
+<ProjectHeader {...projectsBySlug["arc"]} />
+
+Arc is a powerful and versatile data-driven action mod library specifically designed for mod developers in Minecraft. This comprehensive library empowers developers to incorporate dynamic actions, conditions, and rewards into their own mods, providing a seamless and customizable experience for players.
+
+With Arc, mod developers can easily implement the Action, Reward, and Condition (ARC) framework into their mods, enabling them to create complex gameplay mechanics and immersive features. By leveraging this library, developers can add a layer of interactivity and progression to their mods, enhancing the overall player experience.
+
+The core functionality of Arc revolves around the ARC framework, which allows mod developers to define and configure actions, conditions, and rewards based on specific in-game events and criteria. This powerful system enables the creation of unique gameplay elements, where actions trigger rewards when the associated conditions are met.
+
+For example, a mod developer utilizing Arc can define an action such as "On Block Place." They can then set the condition to specific blocks like "Stone" or "Dirt." Finally, they can assign a reward, such as "1 Diamond," which will be granted to the player upon meeting the condition.
+
+The library provides a wide range of customizable options for actions, conditions, and rewards. Developers can define actions based on various in-game events, including interactions with entities, block placements, item usage, mob defeats, and much more. Conditions can be set using criteria such as block types, item properties, entity attributes, player location, game time, or any other relevant game state. Rewards can be tailored to include items, experience points, buffs, or any other desired benefits.
+
+Arc offers a developer-friendly interface, making it easy to integrate the library into existing mods and modify existing gameplay systems. It provides comprehensive documentation, examples, and code snippets, enabling mod developers to quickly grasp and utilize the full potential of the ARC framework.
+
+Empower your mod development journey with Arc - the ultimate data-driven action mod library for Minecraft. Harness the power of dynamic actions, conditions, and rewards, and elevate your modding experience to new heights.
