@@ -16,6 +16,7 @@ const config: Config = {
     url: "https://daqem.com",
     baseUrl: "/",
     onBrokenLinks: "throw",
+    onBrokenAnchors: "ignore",
     markdown: {
         hooks: {
             onBrokenMarkdownLinks: "warn",
