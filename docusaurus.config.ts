@@ -144,26 +144,83 @@ const config: Config = {
                 editUrl: "https://github.com/DAQEM/website/tree/main/",
             } satisfies Partial<DocsPlugin.PluginOptions>,
         ],
-        ...projects.map(
-            (project) => [
-                "@docusaurus/plugin-content-docs",
-                {
-                    id: project.slug,
-                    path: `docs/${project.slug}`,
-                    routeBasePath: `/projects/${project.slug}`,
-                    sidebarPath: `docs/${project.slug}/sidebar.ts`,
-                    sidebarCollapsed: false,
-                    editUrl: "https://github.com/DAQEM/website/tree/main/",
-                } satisfies Partial<DocsPlugin.PluginOptions>,
-            ],
-            [
-                "@docusaurus/plugin-google-gtag",
-                {
-                    trackingID: "G-W16X3LX653",
-                    anonymizeIP: true,
-                },
-            ]
-        ),
+        ...projects.map((project) => [
+            "@docusaurus/plugin-content-docs",
+            {
+                id: project.slug,
+                path: `docs/${project.slug}`,
+                routeBasePath: `/projects/${project.slug}`,
+                sidebarPath: `docs/${project.slug}/sidebar.ts`,
+                sidebarCollapsed: false,
+                editUrl: "https://github.com/DAQEM/website/tree/main/",
+            } satisfies Partial<DocsPlugin.PluginOptions>,
+        ]),
+        [
+            "@docusaurus/plugin-google-gtag",
+            {
+                trackingID: "G-W16X3LX653",
+                anonymizeIP: true,
+            },
+        ],
+        [
+            "@docusaurus/plugin-pwa",
+            {
+                debug: process.env.NODE_ENV !== "production",
+                offlineModeActivationStrategies: [
+                    "appInstalled",
+                    "standalone",
+                    "queryString",
+                ],
+                pwaHead: [
+                    {
+                        tagName: "link",
+                        rel: "icon",
+                        href: "/img/icon.png",
+                    },
+                    {
+                        tagName: "link",
+                        rel: "manifest",
+                        href: "/manifest.json",
+                    },
+                    {
+                        tagName: "meta",
+                        name: "theme-color",
+                        content: "rgb(0, 115, 255)",
+                    },
+                    {
+                        tagName: "meta",
+                        name: "apple-mobile-web-app-capable",
+                        content: "yes",
+                    },
+                    {
+                        tagName: "meta",
+                        name: "apple-mobile-web-app-status-bar-style",
+                        content: "#000",
+                    },
+                    {
+                        tagName: "link",
+                        rel: "apple-touch-icon",
+                        href: "/img/icon.png",
+                    },
+                    {
+                        tagName: "link",
+                        rel: "mask-icon",
+                        href: "/img/icon.svg",
+                        color: "rgb(0, 115, 255)",
+                    },
+                    {
+                        tagName: "meta",
+                        name: "msapplication-TileImage",
+                        content: "/img/icon.png",
+                    },
+                    {
+                        tagName: "meta",
+                        name: "msapplication-TileColor",
+                        content: "#000",
+                    },
+                ],
+            },
+        ],
     ],
     themes: [
         [
