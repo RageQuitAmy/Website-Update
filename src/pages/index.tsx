@@ -9,35 +9,39 @@ export default function Home(): ReactNode {
         <Layout>
             <div>
                 <div className="bg-gradient-to-t from-blue-400 dark:from-blue-800 via-75% via-header-background to-header-background">
-                    <div className="grid lg:grid-cols-2 gap-8 py-32 container">
-                        <div className="flex flex-col justify-between gap-6">
-                            <h1 className="text-7xl max-w-lg">
-                                Dive into a world of wonder!
-                            </h1>
-                            <ul className="flex flex-col gap-2 list-none p-0">
+                    <div className="grid lg:grid-cols-2 gap-8 pt-16 pb-32 md:py-32 container">
+                        <div className="flex flex-col justify-between gap-16 md:gap-6">
+                            <div>
+                                <h1 className="m-0 text-5xl md:text-7xl max-w-lg">
+                                    Dive into a world of wonder!
+                                </h1>
+                                <div className="lg:hidden relative">
+                                    <div className="absolute -top-12 right-0 opacity-10">
+                                        <img
+                                            src="img/hero.webp"
+                                            alt="Hero Image"
+                                            className="w-64 h-auto"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <ul className="flex flex-col gap-1 md:gap-2 list-none p-0 text-xl md:text-2xl font-heading">
                                 <li className="flex gap-2 items-center">
                                     <Star />
-                                    <span className="text-2xl font-heading">
-                                        10+ Unique Mods.
-                                    </span>
+                                    <span>10+ Unique Mods.</span>
                                 </li>
                                 <li className="flex gap-2 items-center">
                                     <Star />
-                                    <span className="text-2xl font-heading">
-                                        4.5M+ Downloads.
-                                    </span>
+                                    <span>4.5M+ Downloads.</span>
                                 </li>
                                 <li className="flex gap-2 items-center">
                                     <Star />
-                                    <span className="text-2xl font-heading">
-                                        4+ Years of Experience.
-                                    </span>
+                                    <span>4+ Years of Experience.</span>
                                 </li>
                                 <li className="flex gap-2 items-center">
                                     <Star />
-                                    <span className="text-2xl font-heading">
-                                        Amazing Discord Support.
-                                    </span>
+                                    <span>Amazing Discord Support.</span>
                                 </li>
                             </ul>
                             <Anchor href="/#projects" className="w-max">

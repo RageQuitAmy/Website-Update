@@ -135,17 +135,26 @@ const config: Config = {
     } satisfies Preset.ThemeConfig,
     plugins: [
         "./src/plugins/tailwind-plugin.ts",
-        ...projects.map((project) => [
-            "@docusaurus/plugin-content-docs",
-            {
-                id: project.slug,
-                path: `docs/${project.slug}`,
-                routeBasePath: `/projects/${project.slug}`,
-                sidebarPath: `docs/${project.slug}/sidebar.ts`,
-                sidebarCollapsed: false,
-                editUrl: "https://github.com/DAQEM/website/tree/main/",
-            } satisfies Partial<DocsPlugin.PluginOptions>,
-        ]),
+        ...projects.map(
+            (project) => [
+                "@docusaurus/plugin-content-docs",
+                {
+                    id: project.slug,
+                    path: `docs/${project.slug}`,
+                    routeBasePath: `/projects/${project.slug}`,
+                    sidebarPath: `docs/${project.slug}/sidebar.ts`,
+                    sidebarCollapsed: false,
+                    editUrl: "https://github.com/DAQEM/website/tree/main/",
+                } satisfies Partial<DocsPlugin.PluginOptions>,
+            ],
+            [
+                "@docusaurus/plugin-google-gtag",
+                {
+                    trackingID: "G-W16X3LX653",
+                    anonymizeIP: true,
+                },
+            ]
+        ),
     ],
 };
 
