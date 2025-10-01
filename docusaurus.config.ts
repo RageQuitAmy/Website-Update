@@ -4,8 +4,6 @@ import type { Config } from "@docusaurus/types";
 import { themes as prismThemes } from "prism-react-renderer";
 import { projects } from "./src/lib/projects";
 
-// This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
-
 const config: Config = {
     title: "DAQEM Studios",
     tagline: "Dive into a world of wonder.",
@@ -135,6 +133,17 @@ const config: Config = {
     } satisfies Preset.ThemeConfig,
     plugins: [
         "./src/plugins/tailwind-plugin.ts",
+        [
+            "@docusaurus/plugin-content-docs",
+            {
+                id: "default",
+                path: "docs/daqem",
+                routeBasePath: "/docs/daqem",
+                sidebarPath: "sidebars.ts",
+                sidebarCollapsed: false,
+                editUrl: "https://github.com/DAQEM/website/tree/main/",
+            } satisfies Partial<DocsPlugin.PluginOptions>,
+        ],
         ...projects.map(
             (project) => [
                 "@docusaurus/plugin-content-docs",
@@ -155,6 +164,18 @@ const config: Config = {
                 },
             ]
         ),
+    ],
+    themes: [
+        [
+            require.resolve("@easyops-cn/docusaurus-search-local"),
+            /** @type {import("@easyops-cn/docusaurus-search-local").PluginOptions} */
+            {
+                hashed: true,
+                indexBlog: false,
+                language: ["en"],
+                searchBarShortcutKeymap: "/",
+            },
+        ],
     ],
 };
 

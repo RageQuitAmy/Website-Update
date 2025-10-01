@@ -48,9 +48,11 @@ ${JSON.stringify(item, null, 2)}`,
 
 function NavbarContentLayout({
     left,
+    center,
     right,
 }: {
     left: ReactNode;
+    center: ReactNode;
     right: ReactNode;
 }) {
     return (
@@ -62,6 +64,11 @@ function NavbarContentLayout({
                 )}
             >
                 {left}
+            </div>
+            <div
+                className={clsx("theme-layout-navbar-center", "navbar__items")}
+            >
+                {center}
             </div>
             <div
                 className={clsx(
@@ -93,6 +100,15 @@ export default function NavbarContent(): ReactNode {
                     <NavbarItems items={leftItems} />
                 </>
             }
+            center={
+                <>
+                    {!searchBarItem && (
+                        <NavbarSearch className="!p-0">
+                            <SearchBar />
+                        </NavbarSearch>
+                    )}
+                </>
+            }
             right={
                 // TODO stop hardcoding items?
                 // Ask the user to add the respective navbar items => more flexible
@@ -104,15 +120,10 @@ export default function NavbarContent(): ReactNode {
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label="Join our Discord"
-                        className="navbar__item !py-1"
+                        className="navbar__item !py-1 !px-4"
                     >
                         Join Our Discord
                     </Anchor>
-                    {!searchBarItem && (
-                        <NavbarSearch>
-                            <SearchBar />
-                        </NavbarSearch>
-                    )}
                 </>
             }
         />
