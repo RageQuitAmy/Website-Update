@@ -2,6 +2,83 @@
 title: Actions
 ---
 
-import DocCardList from "@theme/DocCardList";
+Actions are objects assigned to [Action Holders](../action_holders/index.mdx). Actions consist of an [Action Type](../action_types/index.mdx), zero or more [Condition Types](../condition_types/index.mdx), and zero or more [Reward Types](../reward_types/index.mdx). When an action is triggered by its [Action Type](../action_types/index.mdx), all of its conditions are checked. If all conditions pass, all rewards are granted.
 
-<DocCardList className="category-list" />
+## The Action Lifecycle
+
+Understanding the flow of an action is key to using Arc Lib effectively:
+
+1. **Event Trigger:** An in-game event occurs, such as a player breaking a block, eating food, or taking damage. Arc Lib listens for these events.
+2. **Action Data Creation:** Arc Lib creates an [ActionData](../action_data/index.mdx) object. This object contains the context of the event, such as the player involved, the block that was broken, or the item that was eaten.
+3. **Send to Actions:** This method is called on the [ActionData](../action_data/index.mdx) object, initiating the processing logic.
+4. **Filtering Actions:** The system retrieves all "active" actions from the player's Action Holders. It filters this list to find only the actions whose type matches the event that was just triggered.
+5. **Performing Actions:** For each matching action, the `perform()` method is called.
+6. **Check Conditions:** The `perform()` method goes through the action's conditions. If any condition returns false, the process stops for this action.
+7. **Apply Rewards:** If all conditions pass, the `perform()` method goes through the action's rewards and applies each one.
+
+## JSON Format
+
+```json title="data/<namespace>/arc/example.json"
+{
+    "holder": {
+        "type": "<namespace>:<action_holder_type_id>",
+        "id": "<namespace>:<action_holder_id>"
+    },
+    "type": "<namespace>:<action_type_id>",
+    "conditions": [
+        {
+            "type": "<namespace>:<condition_type_id>"
+            // Condition-specific data
+        }
+    ],
+    "rewards": [
+        {
+            "type": "<namespace>:<reward_type_id>"
+            // Reward-specific data
+        }
+    ]
+}
+```
+
+:::note
+
+The `<namespace>` in the title should be replaced with your mod's or datapack's namespace. The `<namespace>` in the JSON file can vary per entry. For example: `arc`, `jobsplus`, `my_mod`, etc.
+
+:::
+
+### Components Explained
+
+-   **holder:** This object links the action to a specific [Action Holder](../action_holders/index.mdx) instance.
+    -   **type:** The resource location of the [Action Holder Type](../action_holders/index.mdx#action-holder-type). For the [default player holder](../action_holders/index.mdx#player-action-holder), this is arc:player.
+    -   **id:** The resource location of the specific [Action Holder](../action_holders/index.mdx) instance. For the [default player holder](../action_holders/index.mdx#player-action-holder), this is also arc:player.
+-   **type:** The resource location of the [Action Type](../action_types/index.mdx), which specifies the trigger event.
+-   **conditions:** An array of [condition objects](../condition_types/index.mdx). All conditions in this list must be met for the rewards to be applied.
+-   **rewards:** An array of [reward objects](../reward_types/index.mdx). If the conditions are met, all rewards in this list will be granted.
+
+### Example Action
+In this example, the player will have a 1% change to receive a diamond when they mine a stone block.
+
+```json title="data/my_datapack/arc/diamond_for_stone.json"
+{
+    "holder": {
+        "type": "arc:player",
+        "id": "arc:player"
+    },
+    "type": "arc:on_break_block",
+    "conditions": [
+        {
+            "type": "arc:block",
+            "block": "minecraft:stone"
+        }
+    ],
+    "rewards": [
+        {
+            "type": "arc:item",
+            "chance": 1,
+            "item": {
+                "id": "minecraft:diamond"
+            }
+        }
+    ]
+}
+```

@@ -1,0 +1,79 @@
+---
+title: Action Data
+---
+
+Action Data is a crucial component of the Arc Lib framework, serving as a container for information related to in-game events. When an event is triggered, such as a player eating an item or breaking a block, an `ActionData` object is created to hold the context of that event. This object is then passed to the relevant actions, allowing them to perform checks and grant rewards based on the event's details.
+
+## Action Data Class
+
+The `ActionData` class is the default implementation of the `IActionData` interface. It stores the player who triggered the event, the type of action being performed, and a map of `ActionDataType`s to their corresponding data.
+
+## Action Data Type
+
+An **Action Data Type** is a key that is used to access specific data within an `ActionData` object. Arc Lib provides a variety of default action data types that can be used to get information about the event.
+
+### Default Action Data Types
+
+Below is a list of the default `ActionDataType`s provided by Arc Lib:
+
+*   `arc:block_state`: The state of the block involved in the event.
+*   `arc:block_position`: The position of the block involved in the event.
+*   `arc:exp_drop`: The amount of experience dropped.
+*   `arc:exp_level`: The experience level of the player.
+*   `arc:world`: The world in which the event occurred.
+*   `arc:damage_source`: The source of the damage.
+*   `arc:entity`: The entity involved in the event.
+*   `arc:damage_amount`: The amount of damage dealt.
+*   `arc:distance_in_cm`: The distance in centimeters.
+*   `arc:item_stack`: The item stack involved in the event.
+*   `arc:item`: The item involved in the event.
+*   `arc:advancement`: The advancement that was completed.
+*   `arc:mob_effect_instance`: The mob effect instance that was applied.
+*   `arc:recipe`: The recipe that was used.
+
+### Custom Action Data Types
+
+Modders can create their own action data types by implementing the `IActionDataType` interface. This is useful for passing custom data to actions.
+
+```java title="CustomActionDataType.java"
+public interface CustomActionDataType {
+
+    IActionDataType<String> CUSTOM_DATA = ActionDataType.register(ResourceLocation.fromNamespaceAndPath("your_mod_id", "custom_data"));
+}
+```
+
+## Action Data Builder
+
+The `ActionDataBuilder` is a utility class that simplifies the process of creating `ActionData` objects. It provides a fluent API for setting the player, action type, and any additional data.
+
+### Example Usage
+
+Here is an example of how to use the `ActionDataBuilder` to create an `ActionData` object for a custom event:
+
+```java
+public static void onCustomEvent(ArcServerPlayer player, String customData) {
+    new ActionDataBuilder(player, ActionType.CUSTOM_EVENT)
+            .withData(CustomActionDataType.CUSTOM_DATA, customData)
+            .build()
+            .sendToAction();
+}
+```
+
+## Usage in Events
+
+The primary use of `ActionData` is within event listeners. When an event is fired, a new `ActionData` object is created and populated with the relevant information. This object is then passed to the `sendToAction()` method, which finds all actions of the corresponding type and checks their conditions.
+
+### Example: Player Eating Event
+
+Here is an example of how `ActionData` is used in the `onPlayerEat` event:
+
+```java
+public static void onPlayerEat(ArcServerPlayer player, ItemStack stack) {
+    new ActionDataBuilder(player, ActionType.EAT)
+            .withData(ActionDataType.ITEM_STACK, stack)
+            .build()
+            .sendToAction();
+}
+```
+
+In this example, a new `ActionData` object is created with the `EAT` action type. The `ITEM_STACK` data type is used to store the `ItemStack` that the player has eaten. The `sendToAction()` method then passes this `ActionData` object to all actions with the `EAT` action type, allowing them to check if the player has eaten a specific item and grant rewards accordingly.

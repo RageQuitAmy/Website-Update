@@ -1,0 +1,201 @@
+---
+title: Action Holders
+---
+
+Action holders are objects assigned to players that hold actions. The default action holder provided by Arc Lib is the [player action holder](./#player-action-holder). Modders can create their own action holders for more specialized use cases like the [Jobs+ mod](/projects/jobsplus) for job and power-up specific actions.
+
+## Action Holder Type
+
+An **Action Holder Type** is a type of action holder that can be assigned to players. The default action holder type provided by Arc Lib is the `arc:player` action holder type. Modders can create their own action holder types for more specialized use cases. For example, the Jobs+ mod provides a `jobsplus:job` action holder type for job-specific actions and the `jobsplus:power_up` action holder type for power-up-specific actions.
+
+### Custom Action Holder Types
+
+Modders can create their own action holder types by implementing the [`ActionHolderType`](https://github.com/DAQEM/ArcLib/blob/1.21.6/common/src/main/java/com/daqem/arc/api/action/holder/type/ActionHolderType.java) interface and registering it using an `init()` method in their mod's main class or a dedicated registration class.
+
+```java title="CustomActionHolderType.java"
+public interface CustomActionHolderType<T extends IActionHolder> extends ActionHolderType<T> {
+
+    ActionHolderType<CustomActionHolder> CUSTOM_ACTION_HOLDER = ActionHolderType.register(ResourceLocation.fromNamespaceAndPath("your_mod_id", "custom_action_holder"), new CustomActionHolder.Serializer());
+
+    static void init() {
+    }
+}
+```
+
+:::note
+
+Make sure to init the ArcRegistry before registering your custom action holder type. You can do this by calling `ArcRegistry.init()` in your mod's main class or a dedicated registration class.
+
+:::
+
+### Fabric Example
+
+```java title="ExampleFabricMod.java"
+public class ExampleFabricMod implements ModInitializer {
+
+    @Override
+    public void onInitialize() {
+        ArcRegistry.init();
+        CustomActionHolderType.init();
+    }
+}
+```
+
+### NeoForge Example
+
+```java title="ExampleNeoForgeMod.java"
+@Mod("your_mod_id")
+public class ExampleNeoForgeMod {
+
+    public ExampleNeoForgeMod() {
+        ArcRegistry.init();
+        CustomActionHolderType.init();
+    }
+}
+```
+
+## Action Holder
+
+An **Action Holder** is an instance of an action holder type that is assigned to a player. The default action holder provided by Arc Lib is the player action holder (`arc:player`), which is automatically assigned to all players. Modders can create their own action holders for more specialized use cases. For example, the Jobs+ mod creates action holders for each job (e.g. `jobsplus:builder`, `jobsplus:miner`, etc.) and power-up (`jobsplus:builder/less_fall_damage_i`, etc.) that a player has.
+
+### Player Action Holder
+
+The player action holder is the default action holder provided by Arc Lib. It is automatically assigned to all players and can be used to hold actions that should always be active. For example, you can create an action that rewards players with items for mining specific blocks or defeating certain mobs. Since the player action holder is always active, these actions will be checked whenever the corresponding events occur.
+
+### Custom Action Holders
+
+```java title="CustomActionHolder.java"
+public class CustomActionHolder implements AbstractActionHolder {
+
+    public CustomActionHolder(ResourceLocation location) {
+        super(location);
+    }
+
+    @Override
+    public IActionHolderType<?> getType() {
+        return CustomActionHolderType.CUSTOM_ACTION_HOLDER;
+    }
+
+    public static class Serializer implements IActionHolderSerializer<CustomActionHolder> {
+
+        // This method is currently not being used by Arc Lib, but you can use it if you want to deserialize from JSON.
+        @Override
+        public CustomActionHolder fromJson(JsonObject jsonObject, ResourceLocation location) {
+            return new CustomActionHolder(location);
+        }
+
+        // The method is used to sync the action holder to the client.
+        @Override
+        public CustomActionHolder fromNetwork(RegistryFriendlyByteBuf friendlyByteBuf, ResourceLocation location) {
+            return new CustomActionHolder(location);
+        }
+
+        // The method is used to sync the action holder to the client.
+        @Override
+        public void toNetwork(RegistryFriendlyByteBuf friendlyByteBuf, CustomActionHolder type) {
+            IActionHolderSerializer.super.toNetwork(friendlyByteBuf, type);
+        }
+    }
+}
+
+```
+
+### Adding Action Holders to Players
+
+A simple way to add a custom action holder to a player is to do it when the player logs in. You can listen to the player login event and add the action holder to the player if they don't already have it. The action holders are stored in a map, so duplicate action holders will not be added. It is recommended to not add the action holder to the client side, as it will be synced from the server to the client automatically.
+
+```java
+ServerPlayer player = ...; // Get the player instance
+ResourceLocation actionHolderLocation = ResourceLocation.fromNamespaceAndPath("your_mod_id", "custom_action_holder");
+CustomActionHolder customActionHolder = new CustomActionHolder(actionHolderLocation);
+if (player instanceof ArcServerPlayer arcPlayer) {
+    arcPlayer.arc$addActionHolder(customActionHolder);
+}
+```
+
+## Recommended: Action Holder Manager
+
+It is recommended to use an action holder manager to store your custom action holders. Because custom actions can be added using data packs, it is important to create new custom action holder objects every time the the data packs are reloaded. The best way to do this is using a `SimplePreparableReloadListener`. This class is called whenever the server starts and whenever the data packs are reloaded. In the `apply` method, you can create new action holder objects and store them in a map. Then, you can use this map to add the action holders to players when they log in or whenever you need them to be added for your use case.
+
+This method is also used by [Jobs+](/projects/jobsplus) to manage job and power-up action holders. View the [Jobs+](/projects/jobsplus) job action holder manager [here](https://github.com/DAQEM/JobsPlusRemastered/blob/1.21.9/common/src/main/java/com/daqem/jobsplus/integration/arc/holder/holders/job/JobManager.java) and the power-up action holder manager [here](https://github.com/DAQEM/JobsPlusRemastered/blob/1.21.9/common/src/main/java/com/daqem/jobsplus/integration/arc/holder/holders/powerup/PowerupManager.java).
+
+```java title="CustomActionHolderManager.java"
+public class CustomActionHolderManager extends SimplePreparableReloadListener<IActionHolder> {
+
+    private static CustomActionHolderManager instance;
+    private ImmutableMap<ResourceLocation, IActionHolder> customActionHolders = ImmutableMap.of();
+
+    public CustomActionHolderManager() {
+        instance = this;
+    }
+
+    @Override
+    protected @NotNull IActionHolder prepare(ResourceManager resourceManager, ProfilerFiller profilerFiller) {
+        ResourceLocation location = ResourceLocation.fromNamespaceAndPath("your_mod_id", "custom_action_holder");
+        return new CustomActionHolder(location);
+    }
+
+    @Override
+    protected void apply(IActionHolder actionHolder, ResourceManager resourceManager, ProfilerFiller profilerFiller) {
+        ActionHolderManager actionHolderManager = ActionHolderManager.getInstance();
+        // Clear all existing action holders of this type to avoid duplicates
+        actionHolderManager.clearAllActionHoldersForType(ActionHolderType.CUSTOM_ACTION_TYPE);
+
+
+        this.customActionHolders = ImmutableMap.of(actionHolder.getLocation(), actionHolder);
+
+        actionHolderManager.registerActionHolders(List.of(actionHolder));
+    }
+
+    public static CustomActionHolderManager getInstance() {
+        return instance;
+    }
+
+    public List<IActionHolder> getCustomActionHoldersList() {
+        return new ArrayList<>(this.customActionHolders.values());
+    }
+}
+```
+
+### Registering the Action Holder Manager
+
+You can register the action holder manager in your mod's main class or a dedicated registration class.
+
+##### Fabric Example
+
+```java title="ExampleFabricMod.java"
+public class ExampleFabricMod implements ModInitializer {
+    @Override
+    public void onInitialize() {
+        ResourceManagerHelper.get(PackType.SERVER_DATA).registerReloadListener(new CustomActionHolderManager());
+    }
+}
+```
+
+##### NeoForge Example
+
+```java title="ExampleNeoForgeMod.java"
+@Mod("your_mod_id")
+public class ExampleNeoForgeMod {
+    public ExampleNeoForgeMod(IEventBus modEventBus) {
+        modEventBus.addListener(this::onAddReloadListeners);
+    }
+
+    private void onAddReloadListeners(AddServerReloadListenersEvent event) {
+        ResourceLocation location = ResourceLocation.fromNamespaceAndPath("your_mod_id", "custom_action_holder");
+        event.addListener(location, new PlayerActionHolderManager());
+    }
+}
+```
+
+##### Architectury Example
+
+```java title="ExampleArchitecturyMod.java"
+public class ExampleMod {
+    @Override
+    public void initCommon() {
+        ResourceLocation location = ResourceLocation.fromNamespaceAndPath("your_mod_id", "custom_action_holder");
+        ReloadListenerRegistry.register(PackType.SERVER_DATA, new PlayerActionHolderManager(), location);
+    }
+}
+```

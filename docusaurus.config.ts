@@ -17,8 +17,8 @@ const config: Config = {
     onBrokenAnchors: "ignore",
     markdown: {
         hooks: {
-            onBrokenMarkdownLinks: "warn",
-            onBrokenMarkdownImages: "warn",
+            onBrokenMarkdownLinks: "throw",
+            onBrokenMarkdownImages: "throw",
         },
     },
     i18n: {
@@ -128,7 +128,11 @@ const config: Config = {
         },
         prism: {
             theme: prismThemes.github,
-            darkTheme: prismThemes.oneDark,
+            darkTheme: prismThemes.dracula,
+            additionalLanguages: ["java", "yaml"],
+        },
+        tableOfContents: {
+            maxHeadingLevel: 5,
         },
     } satisfies Preset.ThemeConfig,
     plugins: [

@@ -8,11 +8,11 @@ export default function Home(): ReactNode {
     return (
         <Layout>
             <div>
-                <div className="bg-gradient-to-t from-blue-400 dark:from-blue-800 via-75% via-header-background to-header-background">
-                    <div className="grid lg:grid-cols-2 gap-8 pt-16 pb-32 md:py-32 container">
-                        <div className="flex flex-col justify-between gap-16 md:gap-6">
+                <div className="bg-gradient-to-t from-blue-400 dark:from-blue-800 via-75% via-header-background to-header-background h-[calc(100vh-80px)] flex items-center">
+                    <div className="grid lg:grid-cols-2 gap-8 container">
+                        <div className="flex flex-col justify-between gap-8">
                             <div>
-                                <h1 className="m-0 text-5xl md:text-7xl max-w-lg">
+                                <h1 className="m-0 text-5xl md:text-7xl xl:text-8xl">
                                     Dive into a world of wonder!
                                 </h1>
                                 <div className="lg:hidden relative">
@@ -21,6 +21,7 @@ export default function Home(): ReactNode {
                                             src="img/hero.webp"
                                             alt="Hero Image"
                                             className="w-64 h-auto"
+                                            fetchPriority="high"
                                         />
                                     </div>
                                 </div>
@@ -53,6 +54,7 @@ export default function Home(): ReactNode {
                                 src="img/hero.webp"
                                 alt="Hero Image"
                                 className="w-xl h-auto"
+                                fetchPriority="high"
                             />
                         </div>
                     </div>
@@ -63,7 +65,7 @@ export default function Home(): ReactNode {
                 >
                     <div className="container py-32">
                         <div className="text-center mb-16">
-                            <h2 className="text-7xl">Our Mods</h2>
+                            <h2 className="text-5xl md:text-7xl">Our Mods</h2>
                         </div>
                         <div className="grid lg:grid-cols-2 xl:grid-cols-3 gap-8">
                             {projects.map((project) => (

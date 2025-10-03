@@ -12,6 +12,12 @@ const sidebar: SidebarsConfig = {
             label: "Wiki",
             items: [
                 {
+                    type: "doc",
+                    id: "wiki/actions/index",
+                    label: "Actions",
+                    customProps: { emoji: "⚡" },
+                },
+                {
                     type: "category",
                     label: "Action Types",
                     customProps: { emoji: "🎬" },
@@ -25,7 +31,7 @@ const sidebar: SidebarsConfig = {
                             items: [
                                 {
                                     type: "doc",
-                                    id: "wiki/actions/advancements/receive_advancement",
+                                    id: "wiki/action_types/advancements/receive_advancement",
                                     customProps: {
                                         emoji: "🏆",
                                     },
@@ -33,7 +39,7 @@ const sidebar: SidebarsConfig = {
                             ],
                             link: {
                                 type: "doc",
-                                id: "wiki/actions/advancements/index",
+                                id: "wiki/action_types/advancements/index",
                             },
                         },
                         {
@@ -44,42 +50,42 @@ const sidebar: SidebarsConfig = {
                             items: [
                                 {
                                     type: "doc",
-                                    id: "wiki/actions/blocks/break_block",
+                                    id: "wiki/action_types/blocks/break_block",
                                     customProps: {
                                         emoji: "🪓",
                                     },
                                 },
                                 {
                                     type: "doc",
-                                    id: "wiki/actions/blocks/place_block",
+                                    id: "wiki/action_types/blocks/place_block",
                                     customProps: {
                                         emoji: "🧱",
                                     },
                                 },
                                 {
                                     type: "doc",
-                                    id: "wiki/actions/blocks/interact_with_block",
+                                    id: "wiki/action_types/blocks/interact_with_block",
                                     customProps: {
                                         emoji: "🖱️",
                                     },
                                 },
                                 {
                                     type: "doc",
-                                    id: "wiki/actions/blocks/harvest_crop",
+                                    id: "wiki/action_types/blocks/harvest_crop",
                                     customProps: {
                                         emoji: "🌾",
                                     },
                                 },
                                 {
                                     type: "doc",
-                                    id: "wiki/actions/blocks/plant_crop",
+                                    id: "wiki/action_types/blocks/plant_crop",
                                     customProps: {
                                         emoji: "🌱",
                                     },
                                 },
                                 {
                                     type: "doc",
-                                    id: "wiki/actions/blocks/get_destroy_speed",
+                                    id: "wiki/action_types/blocks/get_destroy_speed",
                                     customProps: {
                                         emoji: "⛏️",
                                     },
@@ -87,7 +93,7 @@ const sidebar: SidebarsConfig = {
                             ],
                             link: {
                                 type: "doc",
-                                id: "wiki/actions/blocks/index",
+                                id: "wiki/action_types/blocks/index",
                             },
                         },
                         {
@@ -98,56 +104,56 @@ const sidebar: SidebarsConfig = {
                             items: [
                                 {
                                     type: "doc",
-                                    id: "wiki/actions/entities/get_hurt",
+                                    id: "wiki/action_types/entities/get_hurt",
                                     customProps: {
                                         emoji: "😖",
                                     },
                                 },
                                 {
                                     type: "doc",
-                                    id: "wiki/actions/entities/hurt_entity",
+                                    id: "wiki/action_types/entities/hurt_entity",
                                     customProps: {
                                         emoji: "🗡️",
                                     },
                                 },
                                 {
                                     type: "doc",
-                                    id: "wiki/actions/entities/hurt_player",
+                                    id: "wiki/action_types/entities/hurt_player",
                                     customProps: {
                                         emoji: "🩸",
                                     },
                                 },
                                 {
                                     type: "doc",
-                                    id: "wiki/actions/entities/interact_with_entity",
+                                    id: "wiki/action_types/entities/interact_with_entity",
                                     customProps: {
                                         emoji: "🤝",
                                     },
                                 },
                                 {
                                     type: "doc",
-                                    id: "wiki/actions/entities/kill_entity",
+                                    id: "wiki/action_types/entities/kill_entity",
                                     customProps: {
                                         emoji: "💀",
                                     },
                                 },
                                 {
                                     type: "doc",
-                                    id: "wiki/actions/entities/death",
+                                    id: "wiki/action_types/entities/death",
                                     customProps: {
                                         emoji: "⚰️",
                                     },
                                 },
                                 {
                                     type: "doc",
-                                    id: "wiki/actions/entities/breed_animal",
+                                    id: "wiki/action_types/entities/breed_animal",
                                     customProps: {
                                         emoji: "🐾",
                                     },
                                 },
                                 {
                                     type: "doc",
-                                    id: "wiki/actions/entities/tame_animal",
+                                    id: "wiki/action_types/entities/tame_animal",
                                     customProps: {
                                         emoji: "🐕",
                                     },
@@ -155,7 +161,7 @@ const sidebar: SidebarsConfig = {
                             ],
                             link: {
                                 type: "doc",
-                                id: "wiki/actions/entities/index",
+                                id: "wiki/action_types/entities/index",
                             },
                         },
                         {
@@ -166,63 +172,63 @@ const sidebar: SidebarsConfig = {
                             items: [
                                 {
                                     type: "doc",
-                                    id: "wiki/actions/items/craft_item",
+                                    id: "wiki/action_types/items/craft_item",
                                     customProps: {
                                         emoji: "🛠️",
                                     },
                                 },
                                 {
                                     type: "doc",
-                                    id: "wiki/actions/items/drop_item",
+                                    id: "wiki/action_types/items/drop_item",
                                     customProps: {
                                         emoji: "🗑️",
                                     },
                                 },
                                 {
                                     type: "doc",
-                                    id: "wiki/actions/items/enchant_item",
+                                    id: "wiki/action_types/items/enchant_item",
                                     customProps: {
                                         emoji: "✨",
                                     },
                                 },
                                 {
                                     type: "doc",
-                                    id: "wiki/actions/items/fish_up_item",
+                                    id: "wiki/action_types/items/fish_up_item",
                                     customProps: {
                                         emoji: "🎣",
                                     },
                                 },
                                 {
                                     type: "doc",
-                                    id: "wiki/actions/items/grind_item",
+                                    id: "wiki/action_types/items/grind_item",
                                     customProps: {
                                         emoji: "🔪",
                                     },
                                 },
                                 {
                                     type: "doc",
-                                    id: "wiki/actions/items/hurt_item",
+                                    id: "wiki/action_types/items/hurt_item",
                                     customProps: {
                                         emoji: "💔",
                                     },
                                 },
                                 {
                                     type: "doc",
-                                    id: "wiki/actions/items/smelt_item",
+                                    id: "wiki/action_types/items/smelt_item",
                                     customProps: {
                                         emoji: "🔥",
                                     },
                                 },
                                 {
                                     type: "doc",
-                                    id: "wiki/actions/items/throw_item",
+                                    id: "wiki/action_types/items/throw_item",
                                     customProps: {
                                         emoji: "🏹",
                                     },
                                 },
                                 {
                                     type: "doc",
-                                    id: "wiki/actions/items/use_item",
+                                    id: "wiki/action_types/items/use_item",
                                     customProps: {
                                         emoji: "🖱️",
                                     },
@@ -230,7 +236,7 @@ const sidebar: SidebarsConfig = {
                             ],
                             link: {
                                 type: "doc",
-                                id: "wiki/actions/items/index",
+                                id: "wiki/action_types/items/index",
                             },
                         },
                         {
@@ -241,105 +247,105 @@ const sidebar: SidebarsConfig = {
                             items: [
                                 {
                                     type: "doc",
-                                    id: "wiki/actions/movement/crouch",
+                                    id: "wiki/action_types/movement/crouch",
                                     customProps: {
                                         emoji: "🧎",
                                     },
                                 },
                                 {
                                     type: "doc",
-                                    id: "wiki/actions/movement/crouch_start",
+                                    id: "wiki/action_types/movement/crouch_start",
                                     customProps: {
                                         emoji: "🧎",
                                     },
                                 },
                                 {
                                     type: "doc",
-                                    id: "wiki/actions/movement/crouch_stop",
+                                    id: "wiki/action_types/movement/crouch_stop",
                                     customProps: {
                                         emoji: "🧎",
                                     },
                                 },
                                 {
                                     type: "doc",
-                                    id: "wiki/actions/movement/elytra_fly",
+                                    id: "wiki/action_types/movement/elytra_fly",
                                     customProps: {
                                         emoji: "🪽",
                                     },
                                 },
                                 {
                                     type: "doc",
-                                    id: "wiki/actions/movement/elytra_fly_start",
+                                    id: "wiki/action_types/movement/elytra_fly_start",
                                     customProps: {
                                         emoji: "🪽",
                                     },
                                 },
                                 {
                                     type: "doc",
-                                    id: "wiki/actions/movement/elytra_fly_stop",
+                                    id: "wiki/action_types/movement/elytra_fly_stop",
                                     customProps: {
                                         emoji: "🪽",
                                     },
                                 },
                                 {
                                     type: "doc",
-                                    id: "wiki/actions/movement/horse_ride",
+                                    id: "wiki/action_types/movement/horse_ride",
                                     customProps: {
                                         emoji: "🐎",
                                     },
                                 },
                                 {
                                     type: "doc",
-                                    id: "wiki/actions/movement/horse_ride_start",
+                                    id: "wiki/action_types/movement/horse_ride_start",
                                     customProps: {
                                         emoji: "🐎",
                                     },
                                 },
                                 {
                                     type: "doc",
-                                    id: "wiki/actions/movement/horse_ride_stop",
+                                    id: "wiki/action_types/movement/horse_ride_stop",
                                     customProps: {
                                         emoji: "🐎",
                                     },
                                 },
                                 {
                                     type: "doc",
-                                    id: "wiki/actions/movement/sprint",
+                                    id: "wiki/action_types/movement/sprint",
                                     customProps: {
                                         emoji: "🏃",
                                     },
                                 },
                                 {
                                     type: "doc",
-                                    id: "wiki/actions/movement/sprint_start",
+                                    id: "wiki/action_types/movement/sprint_start",
                                     customProps: {
                                         emoji: "🏃",
                                     },
                                 },
                                 {
                                     type: "doc",
-                                    id: "wiki/actions/movement/sprint_stop",
+                                    id: "wiki/action_types/movement/sprint_stop",
                                     customProps: {
                                         emoji: "🏃",
                                     },
                                 },
                                 {
                                     type: "doc",
-                                    id: "wiki/actions/movement/swim",
+                                    id: "wiki/action_types/movement/swim",
                                     customProps: {
                                         emoji: "🏊",
                                     },
                                 },
                                 {
                                     type: "doc",
-                                    id: "wiki/actions/movement/swim_start",
+                                    id: "wiki/action_types/movement/swim_start",
                                     customProps: {
                                         emoji: "🏊",
                                     },
                                 },
                                 {
                                     type: "doc",
-                                    id: "wiki/actions/movement/swim_stop",
+                                    id: "wiki/action_types/movement/swim_stop",
                                     customProps: {
                                         emoji: "🏊",
                                     },
@@ -347,21 +353,21 @@ const sidebar: SidebarsConfig = {
 
                                 {
                                     type: "doc",
-                                    id: "wiki/actions/movement/walk",
+                                    id: "wiki/action_types/movement/walk",
                                     customProps: {
                                         emoji: "🚶",
                                     },
                                 },
                                 {
                                     type: "doc",
-                                    id: "wiki/actions/movement/walk_start",
+                                    id: "wiki/action_types/movement/walk_start",
                                     customProps: {
                                         emoji: "🚶",
                                     },
                                 },
                                 {
                                     type: "doc",
-                                    id: "wiki/actions/movement/walk_stop",
+                                    id: "wiki/action_types/movement/walk_stop",
                                     customProps: {
                                         emoji: "🚶",
                                     },
@@ -369,7 +375,7 @@ const sidebar: SidebarsConfig = {
                             ],
                             link: {
                                 type: "doc",
-                                id: "wiki/actions/movement/index",
+                                id: "wiki/action_types/movement/index",
                             },
                         },
                         {
@@ -380,63 +386,63 @@ const sidebar: SidebarsConfig = {
                             items: [
                                 {
                                     type: "doc",
-                                    id: "wiki/actions/players/brew_potion",
+                                    id: "wiki/action_types/players/brew_potion",
                                     customProps: {
                                         emoji: "🧪",
                                     },
                                 },
                                 {
                                     type: "doc",
-                                    id: "wiki/actions/players/drink",
+                                    id: "wiki/action_types/players/drink",
                                     customProps: {
                                         emoji: "🥛",
                                     },
                                 },
                                 {
                                     type: "doc",
-                                    id: "wiki/actions/players/eat",
+                                    id: "wiki/action_types/players/eat",
                                     customProps: {
                                         emoji: "🍽️",
                                     },
                                 },
                                 {
                                     type: "doc",
-                                    id: "wiki/actions/players/effect_added",
+                                    id: "wiki/action_types/players/effect_added",
                                     customProps: {
                                         emoji: "💊",
                                     },
                                 },
                                 {
                                     type: "doc",
-                                    id: "wiki/actions/players/get_attack_speed",
+                                    id: "wiki/action_types/players/get_attack_speed",
                                     customProps: {
                                         emoji: "⚔️",
                                     },
                                 },
                                 {
                                     type: "doc",
-                                    id: "wiki/actions/players/rod_reel_in",
+                                    id: "wiki/action_types/players/rod_reel_in",
                                     customProps: {
                                         emoji: "🎣",
                                     },
                                 },
                                 {
                                     type: "doc",
-                                    id: "wiki/actions/players/shoot_projectile",
+                                    id: "wiki/action_types/players/shoot_projectile",
                                     customProps: {
                                         emoji: "🏹",
                                     },
                                 },
                                 {
                                     type: "doc",
-                                    id: "wiki/actions/players/strip_log",
+                                    id: "wiki/action_types/players/strip_log",
                                     customProps: {
                                         emoji: "🪵",
                                     },
                                 },
                                 {
                                     type: "doc",
-                                    id: "wiki/actions/players/use_anvil",
+                                    id: "wiki/action_types/players/use_anvil",
                                     customProps: {
                                         emoji: "⚒️",
                                     },
@@ -444,11 +450,11 @@ const sidebar: SidebarsConfig = {
                             ],
                             link: {
                                 type: "doc",
-                                id: "wiki/actions/players/index",
+                                id: "wiki/action_types/players/index",
                             },
                         },
                     ],
-                    link: { type: "doc", id: "wiki/actions/index" },
+                    link: { type: "doc", id: "wiki/action_types/index" },
                 },
                 {
                     type: "category",
@@ -458,7 +464,7 @@ const sidebar: SidebarsConfig = {
                     items: [
                         {
                             type: "doc",
-                            id: "wiki/rewards/cancel_action",
+                            id: "wiki/reward_types/cancel_action",
                             label: "Cancel Action",
                             customProps: { emoji: "❌" },
                         },
@@ -470,14 +476,14 @@ const sidebar: SidebarsConfig = {
                             items: [
                                 {
                                     type: "doc",
-                                    id: "wiki/rewards/blocks/block_drop_multiplier",
+                                    id: "wiki/reward_types/blocks/block_drop_multiplier",
                                     customProps: {
                                         emoji: "🎒",
                                     },
                                 },
                                 {
                                     type: "doc",
-                                    id: "wiki/rewards/blocks/destroy_speed_multiplier",
+                                    id: "wiki/reward_types/blocks/destroy_speed_multiplier",
                                     customProps: {
                                         emoji: "⛏️",
                                     },
@@ -485,7 +491,7 @@ const sidebar: SidebarsConfig = {
                             ],
                             link: {
                                 type: "doc",
-                                id: "wiki/rewards/blocks/index",
+                                id: "wiki/reward_types/blocks/index",
                             },
                         },
                         {
@@ -496,28 +502,28 @@ const sidebar: SidebarsConfig = {
                             items: [
                                 {
                                     type: "doc",
-                                    id: "wiki/rewards/effects/effect",
+                                    id: "wiki/reward_types/effects/effect",
                                     customProps: {
                                         emoji: "💊",
                                     },
                                 },
                                 {
                                     type: "doc",
-                                    id: "wiki/rewards/effects/remove_effect",
+                                    id: "wiki/reward_types/effects/remove_effect",
                                     customProps: {
                                         emoji: "❌",
                                     },
                                 },
                                 {
                                     type: "doc",
-                                    id: "wiki/rewards/effects/effect_duration_multiplier",
+                                    id: "wiki/reward_types/effects/effect_duration_multiplier",
                                     customProps: {
                                         emoji: "⏳",
                                     },
                                 },
                                 {
                                     type: "doc",
-                                    id: "wiki/rewards/effects/effect_amplifier_addition",
+                                    id: "wiki/reward_types/effects/effect_amplifier_addition",
                                     customProps: {
                                         emoji: "➕",
                                     },
@@ -525,7 +531,7 @@ const sidebar: SidebarsConfig = {
                             ],
                             link: {
                                 type: "doc",
-                                id: "wiki/rewards/effects/index",
+                                id: "wiki/reward_types/effects/index",
                             },
                         },
                         {
@@ -536,21 +542,21 @@ const sidebar: SidebarsConfig = {
                             items: [
                                 {
                                     type: "doc",
-                                    id: "wiki/rewards/entities/damage_multiplier",
+                                    id: "wiki/reward_types/entities/damage_multiplier",
                                     customProps: {
                                         emoji: "🗡️",
                                     },
                                 },
                                 {
                                     type: "doc",
-                                    id: "wiki/rewards/entities/entity_on_fire",
+                                    id: "wiki/reward_types/entities/entity_on_fire",
                                     customProps: {
                                         emoji: "🔥",
                                     },
                                 },
                                 {
                                     type: "doc",
-                                    id: "wiki/rewards/entities/multiple_arrows",
+                                    id: "wiki/reward_types/entities/multiple_arrows",
                                     customProps: {
                                         emoji: "🏹",
                                     },
@@ -558,7 +564,7 @@ const sidebar: SidebarsConfig = {
                             ],
                             link: {
                                 type: "doc",
-                                id: "wiki/rewards/entities/index",
+                                id: "wiki/reward_types/entities/index",
                             },
                         },
                         {
@@ -569,14 +575,14 @@ const sidebar: SidebarsConfig = {
                             items: [
                                 {
                                     type: "doc",
-                                    id: "wiki/rewards/experience/experience",
+                                    id: "wiki/reward_types/experience/experience",
                                     customProps: {
                                         emoji: "✨",
                                     },
                                 },
                                 {
                                     type: "doc",
-                                    id: "wiki/rewards/experience/experience_multiplier",
+                                    id: "wiki/reward_types/experience/experience_multiplier",
                                     customProps: {
                                         emoji: "✖️",
                                     },
@@ -584,7 +590,7 @@ const sidebar: SidebarsConfig = {
                             ],
                             link: {
                                 type: "doc",
-                                id: "wiki/rewards/experience/index",
+                                id: "wiki/reward_types/experience/index",
                             },
                         },
                         {
@@ -595,14 +601,14 @@ const sidebar: SidebarsConfig = {
                             items: [
                                 {
                                     type: "doc",
-                                    id: "wiki/rewards/items/item",
+                                    id: "wiki/reward_types/items/item",
                                     customProps: {
                                         emoji: "🎒",
                                     },
                                 },
                                 {
                                     type: "doc",
-                                    id: "wiki/rewards/items/drop_item",
+                                    id: "wiki/reward_types/items/drop_item",
                                     customProps: {
                                         emoji: "🌍",
                                     },
@@ -610,7 +616,7 @@ const sidebar: SidebarsConfig = {
                             ],
                             link: {
                                 type: "doc",
-                                id: "wiki/rewards/items/index",
+                                id: "wiki/reward_types/items/index",
                             },
                         },
                         {
@@ -621,14 +627,14 @@ const sidebar: SidebarsConfig = {
                             items: [
                                 {
                                     type: "doc",
-                                    id: "wiki/rewards/players/attack_speed_multiplier",
+                                    id: "wiki/reward_types/players/attack_speed_multiplier",
                                     customProps: {
                                         emoji: "⚔️",
                                     },
                                 },
                                 {
                                     type: "doc",
-                                    id: "wiki/rewards/players/move_to_entity",
+                                    id: "wiki/reward_types/players/move_to_entity",
                                     customProps: {
                                         emoji: "📍",
                                     },
@@ -636,7 +642,7 @@ const sidebar: SidebarsConfig = {
                             ],
                             link: {
                                 type: "doc",
-                                id: "wiki/rewards/players/index",
+                                id: "wiki/reward_types/players/index",
                             },
                         },
                         {
@@ -647,7 +653,7 @@ const sidebar: SidebarsConfig = {
                             items: [
                                 {
                                     type: "doc",
-                                    id: "wiki/rewards/server/command",
+                                    id: "wiki/reward_types/server/command",
                                     customProps: {
                                         emoji: "⚙️",
                                     },
@@ -655,11 +661,11 @@ const sidebar: SidebarsConfig = {
                             ],
                             link: {
                                 type: "doc",
-                                id: "wiki/rewards/server/index",
+                                id: "wiki/reward_types/server/index",
                             },
                         },
                     ],
-                    link: { type: "doc", id: "wiki/rewards/index" },
+                    link: { type: "doc", id: "wiki/reward_types/index" },
                 },
                 {
                     type: "category",
@@ -669,13 +675,13 @@ const sidebar: SidebarsConfig = {
                     items: [
                         {
                             type: "doc",
-                            id: "wiki/conditions/or",
+                            id: "wiki/condition_types/or",
                             label: "OR",
                             customProps: { emoji: "🔀" },
                         },
                         {
                             type: "doc",
-                            id: "wiki/conditions/not",
+                            id: "wiki/condition_types/not",
                             label: "NOT",
                             customProps: { emoji: "❌" },
                         },
@@ -687,49 +693,49 @@ const sidebar: SidebarsConfig = {
                             items: [
                                 {
                                     type: "doc",
-                                    id: "wiki/conditions/blocks/block",
+                                    id: "wiki/condition_types/blocks/block",
                                     customProps: {
                                         emoji: "🧊",
                                     },
                                 },
                                 {
                                     type: "doc",
-                                    id: "wiki/conditions/blocks/blocks",
+                                    id: "wiki/condition_types/blocks/blocks",
                                     customProps: {
                                         emoji: "🧊🧊",
                                     },
                                 },
                                 {
                                     type: "doc",
-                                    id: "wiki/conditions/blocks/block_hardness",
+                                    id: "wiki/condition_types/blocks/block_hardness",
                                     customProps: {
                                         emoji: "⛏️",
                                     },
                                 },
                                 {
                                     type: "doc",
-                                    id: "wiki/conditions/blocks/is_ore",
+                                    id: "wiki/condition_types/blocks/is_ore",
                                     customProps: {
                                         emoji: "💎",
                                     },
                                 },
                                 {
                                     type: "doc",
-                                    id: "wiki/conditions/blocks/crop_age",
+                                    id: "wiki/condition_types/blocks/crop_age",
                                     customProps: {
                                         emoji: "🌱",
                                     },
                                 },
                                 {
                                     type: "doc",
-                                    id: "wiki/conditions/blocks/crop_fully_grown",
+                                    id: "wiki/condition_types/blocks/crop_fully_grown",
                                     customProps: {
                                         emoji: "🌾",
                                     },
                                 },
                                 {
                                     type: "doc",
-                                    id: "wiki/conditions/blocks/not_in_block_position_cache",
+                                    id: "wiki/condition_types/blocks/not_in_block_position_cache",
                                     customProps: {
                                         emoji: "💾",
                                     },
@@ -737,7 +743,7 @@ const sidebar: SidebarsConfig = {
                             ],
                             link: {
                                 type: "doc",
-                                id: "wiki/conditions/blocks/index",
+                                id: "wiki/condition_types/blocks/index",
                             },
                         },
                         {
@@ -748,14 +754,14 @@ const sidebar: SidebarsConfig = {
                             items: [
                                 {
                                     type: "doc",
-                                    id: "wiki/conditions/effects/effect",
+                                    id: "wiki/condition_types/effects/effect",
                                     customProps: {
                                         emoji: "💊",
                                     },
                                 },
                                 {
                                     type: "doc",
-                                    id: "wiki/conditions/effects/effect_category",
+                                    id: "wiki/condition_types/effects/effect_category",
                                     customProps: {
                                         emoji: "📂",
                                     },
@@ -763,7 +769,7 @@ const sidebar: SidebarsConfig = {
                             ],
                             link: {
                                 type: "doc",
-                                id: "wiki/conditions/effects/index",
+                                id: "wiki/condition_types/effects/index",
                             },
                         },
                         {
@@ -774,35 +780,35 @@ const sidebar: SidebarsConfig = {
                             items: [
                                 {
                                     type: "doc",
-                                    id: "wiki/conditions/entities/entity_type",
+                                    id: "wiki/condition_types/entities/entity_type",
                                     customProps: {
                                         emoji: "👤",
                                     },
                                 },
                                 {
                                     type: "doc",
-                                    id: "wiki/conditions/entities/entity_types",
+                                    id: "wiki/condition_types/entities/entity_types",
                                     customProps: {
                                         emoji: "👥",
                                     },
                                 },
                                 {
                                     type: "doc",
-                                    id: "wiki/conditions/entities/entity_in_block",
+                                    id: "wiki/condition_types/entities/entity_in_block",
                                     customProps: {
                                         emoji: "🧊",
                                     },
                                 },
                                 {
                                     type: "doc",
-                                    id: "wiki/conditions/entities/damage_source",
+                                    id: "wiki/condition_types/entities/damage_source",
                                     customProps: {
                                         emoji: "🩸",
                                     },
                                 },
                                 {
                                     type: "doc",
-                                    id: "wiki/conditions/entities/ready_for_shearing",
+                                    id: "wiki/condition_types/entities/ready_for_shearing",
                                     customProps: {
                                         emoji: "✂️",
                                     },
@@ -810,7 +816,7 @@ const sidebar: SidebarsConfig = {
                             ],
                             link: {
                                 type: "doc",
-                                id: "wiki/conditions/entities/index",
+                                id: "wiki/condition_types/entities/index",
                             },
                         },
                         {
@@ -821,14 +827,14 @@ const sidebar: SidebarsConfig = {
                             items: [
                                 {
                                     type: "doc",
-                                    id: "wiki/conditions/experience/dropped_experience",
+                                    id: "wiki/condition_types/experience/dropped_experience",
                                     customProps: {
                                         emoji: "🌍",
                                     },
                                 },
                                 {
                                     type: "doc",
-                                    id: "wiki/conditions/experience/experience_level",
+                                    id: "wiki/condition_types/experience/experience_level",
                                     customProps: {
                                         emoji: "🔢",
                                     },
@@ -836,7 +842,7 @@ const sidebar: SidebarsConfig = {
                             ],
                             link: {
                                 type: "doc",
-                                id: "wiki/conditions/experience/index",
+                                id: "wiki/condition_types/experience/index",
                             },
                         },
                         {
@@ -847,35 +853,35 @@ const sidebar: SidebarsConfig = {
                             items: [
                                 {
                                     type: "doc",
-                                    id: "wiki/conditions/items/item",
+                                    id: "wiki/condition_types/items/item",
                                     customProps: {
                                         emoji: "🎒",
                                     },
                                 },
                                 {
                                     type: "doc",
-                                    id: "wiki/conditions/items/items",
+                                    id: "wiki/condition_types/items/items",
                                     customProps: {
                                         emoji: "🎒🎒",
                                     },
                                 },
                                 {
                                     type: "doc",
-                                    id: "wiki/conditions/items/item_in_hand",
+                                    id: "wiki/condition_types/items/item_in_hand",
                                     customProps: {
                                         emoji: "🖐️",
                                     },
                                 },
                                 {
                                     type: "doc",
-                                    id: "wiki/conditions/items/item_in_inventory",
+                                    id: "wiki/condition_types/items/item_in_inventory",
                                     customProps: {
                                         emoji: "📦",
                                     },
                                 },
                                 {
                                     type: "doc",
-                                    id: "wiki/conditions/items/item_equipped",
+                                    id: "wiki/condition_types/items/item_equipped",
                                     customProps: {
                                         emoji: "👕",
                                     },
@@ -883,7 +889,7 @@ const sidebar: SidebarsConfig = {
                             ],
                             link: {
                                 type: "doc",
-                                id: "wiki/conditions/items/index",
+                                id: "wiki/condition_types/items/index",
                             },
                         },
                         {
@@ -894,7 +900,7 @@ const sidebar: SidebarsConfig = {
                             items: [
                                 {
                                     type: "doc",
-                                    id: "wiki/conditions/movement/distance",
+                                    id: "wiki/condition_types/movement/distance",
                                     customProps: {
                                         emoji: "📏",
                                     },
@@ -902,7 +908,7 @@ const sidebar: SidebarsConfig = {
                             ],
                             link: {
                                 type: "doc",
-                                id: "wiki/conditions/movement/index",
+                                id: "wiki/condition_types/movement/index",
                             },
                         },
                         {
@@ -913,14 +919,14 @@ const sidebar: SidebarsConfig = {
                             items: [
                                 {
                                     type: "doc",
-                                    id: "wiki/conditions/recipes/is_blasting_recipe",
+                                    id: "wiki/condition_types/recipes/is_blasting_recipe",
                                     customProps: {
                                         emoji: "🔥",
                                     },
                                 },
                                 {
                                     type: "doc",
-                                    id: "wiki/conditions/recipes/is_smoking_recipe",
+                                    id: "wiki/condition_types/recipes/is_smoking_recipe",
                                     customProps: {
                                         emoji: "💨",
                                     },
@@ -928,7 +934,7 @@ const sidebar: SidebarsConfig = {
                             ],
                             link: {
                                 type: "doc",
-                                id: "wiki/conditions/recipes/index",
+                                id: "wiki/condition_types/recipes/index",
                             },
                         },
                         {
@@ -939,7 +945,7 @@ const sidebar: SidebarsConfig = {
                             items: [
                                 {
                                     type: "doc",
-                                    id: "wiki/conditions/scoreboard/scoreboard",
+                                    id: "wiki/condition_types/scoreboard/scoreboard",
                                     customProps: {
                                         emoji: "📊",
                                     },
@@ -947,7 +953,7 @@ const sidebar: SidebarsConfig = {
                             ],
                             link: {
                                 type: "doc",
-                                id: "wiki/conditions/scoreboard/index",
+                                id: "wiki/condition_types/scoreboard/index",
                             },
                         },
                         {
@@ -958,7 +964,7 @@ const sidebar: SidebarsConfig = {
                             items: [
                                 {
                                     type: "doc",
-                                    id: "wiki/conditions/team/team",
+                                    id: "wiki/condition_types/team/team",
                                     customProps: {
                                         emoji: "👥",
                                     },
@@ -966,7 +972,7 @@ const sidebar: SidebarsConfig = {
                             ],
                             link: {
                                 type: "doc",
-                                id: "wiki/conditions/team/index",
+                                id: "wiki/condition_types/team/index",
                             },
                         },
                         {
@@ -977,7 +983,7 @@ const sidebar: SidebarsConfig = {
                             items: [
                                 {
                                     type: "doc",
-                                    id: "wiki/conditions/world/dimension",
+                                    id: "wiki/condition_types/world/dimension",
                                     customProps: {
                                         emoji: "🌍",
                                     },
@@ -985,11 +991,25 @@ const sidebar: SidebarsConfig = {
                             ],
                             link: {
                                 type: "doc",
-                                id: "wiki/conditions/world/index",
+                                id: "wiki/condition_types/world/index",
                             },
                         },
                     ],
-                    link: { type: "doc", id: "wiki/conditions/index" },
+                    link: { type: "doc", id: "wiki/condition_types/index" },
+                },
+                {
+                    type: "doc",
+                    id: "wiki/action_holders/index",
+                    label: "Action Holders",
+                    customProps: { emoji: "👤" },
+                },
+                {
+                    type: "category",
+                    label: "Action Data",
+                    customProps: { emoji: "📊" },
+                    collapsed: true,
+                    items: [],
+                    link: { type: "doc", id: "wiki/action_data/index" },
                 },
             ],
             link: { type: "doc", id: "wiki/index" },
